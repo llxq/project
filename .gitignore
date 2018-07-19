@@ -1,0 +1,5 @@
+#这个是忽略文件
+node_modules
+.idea
+.vscode
+.git
