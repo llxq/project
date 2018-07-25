@@ -1,9 +1,9 @@
 <template>
     <div class="comment-container">
-        <h3>发表评论</h3>
+        <h3>留言板</h3>
         <hr>
         <textarea placeholder="请输入要品论的内容(最多吐槽20字)" maxlength="120" v-model="commentInfo"></textarea>
-        <mt-button type="primary" size="large" @click="publish">发表评论</mt-button>
+        <mt-button type="primary" size="large" @click="publish">发表留言</mt-button>
         <div class="comment-list">
             <div class="comment-item" v-for="(item, i) in showList" :key="i">
                 <div class="comment-title">
@@ -105,9 +105,9 @@ export default {
                 });
             } else {
                 Toast({
-                    message: "评论不能为空",
+                    message: "留言不能为空",
                     duration: 1000
-                });
+                })
             }
         }
     }

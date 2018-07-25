@@ -24,7 +24,11 @@ import VueResource from 'vue-resource';
 Vue.use(VueResource)
 
 // vuex
-import './store/store.js';
+import store from './store/store.js';
+
+//引入veu-preview，缩略图放大的功能
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
 
 
 
@@ -45,5 +49,8 @@ Vue.filter('dateFormat', str =>
 const vm = new Vue({
     el: '#app',
     render: c => c(App),
-    router
+    router,
+
+    // 挂载 vuex
+    store
 })

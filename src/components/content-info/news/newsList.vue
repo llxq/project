@@ -3,12 +3,12 @@
     <div>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id" @click="show(item.title)">
-                <router-link :to="'/home/newsinfo' + item.id">
+                <router-link to="/home/newsinfo">
                     <img :src="item.images[0]" class="mui-media-object mui-pull-left">
                     <div class="mui-media-body">
                         <h3>{{ item.title }}</h3>
                         <p class='mui-ellipsis'>
-                            <span>发表时间：2017-12-12 12:12:12</span>
+                            <span>发表时间：2017-12-12</span>
                             <span>点击：{{ item.id }}次</span>
                         </p>
                     </div>
@@ -58,6 +58,7 @@ export default {
     li {
         h3 {
             font-size: 15px;
+            width: 200px;
         }
         .mui-ellipsis {
             display: flex;

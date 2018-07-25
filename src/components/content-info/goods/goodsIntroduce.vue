@@ -1,6 +1,6 @@
 <template>
     <div class="newsInfo">
-        <h3 class="title">{{ title }}</h3>
+        <h3 class="title">这个是图文介绍</h3>
         <p class="subTitle">
             <span>发表时间：2017-12-12
             </span>
@@ -13,29 +13,20 @@
         <!-- 详情 -->
         <div class="content" v-html="message"></div>
         <br>
-        <!-- 评论 -->
-        <comment></comment>
     </div>
 </template>
 
 <script>
 import { Toast } from "mint-ui";
-// 导入 评论组件
-import comment from "../../comment/comment.vue";
+import store from "../../../store/store.js";
 export default {
     data() {
         return {
-            message: {},
-            title: ""
+            message: {}
         };
     },
     created() {
         this.getNewsInfo();
-        // 这个是为了防止 刷新之后 title的值为空了
-        if (this.$store.state.title != "") {
-            localStorage.setItem("title", this.$store.state.title);
-        }
-        this.title = localStorage.getItem("title");
     },
     methods: {
         getNewsInfo() {
@@ -50,30 +41,7 @@ export default {
                         duration: 3000
                     });
                 });
-            /* this.$http
-                .jsonp(
-                    "http://news-at.zhihu.com/api/2/news/" + this.id,
-                    {},
-                    {
-                        headers: { "Content-Type": "application/json" },
-                        emulateJSON: true,
-                        jsonp: "_callback"
-                    }
-                )
-                .then(result => {
-                    console.log(result.body);
-                })
-                .catch(err => {
-                    Toast({
-                        message: "获取新闻列表失败",
-                        duration: 3000
-                    });
-                }); */
         }
-    },
-    // 注册组件
-    components: {
-        comment
     }
 };
 </script>

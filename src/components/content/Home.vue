@@ -1,11 +1,8 @@
 <template>
     <div>
         <!-- 轮播图：使用 mint-ui 的 轮播图 -->
-        <mt-swipe>
-            <mt-swipe-item v-for="(item, index) in swipePicture" :key="index">
-                <img :src="item.url" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
+        <!-- :isfull 宽度是否自适应 false是 -->
+        <swiper :photos="swipePicture" :isfull="true"></swiper>
 
         <!-- 九宫格：使用 mui 的 grid-defefault -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -16,40 +13,42 @@
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
-                    <span class="mui-icon mui-icon-extra mui-icon-extra-share"></span>
-                    <div class="mui-media-body">图片分享</div>
-                </a>
+                <router-link to="/home/photoShare">
+                    <span class="mui-icon mui-icon-image"></span>
+                    <div class="mui-media-body">图片欣赏</div>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="/home/goodsList">
                     <span class="mui-icon mui-icon-extra mui-icon-extra-cart"></span>
                     <div class="mui-media-body">商品购买</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
-                    <span class="mui-icon mui-icon mui-icon-chatbubble"></span>
+                <router-link to="/home/leaveMessage">
+                    <span class="mui-icon mui-icon-chatbubble"></span>
                     <div class="mui-media-body">留言反馈</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="#">
                     <span class="mui-icon mui-icon mui-icon-videocam"></span>
                     <div class="mui-media-body">视频专区</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="#">
                     <span class="mui-icon mui-icon-phone"></span>
                     <div class="mui-media-body">联系我们</div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+// 导入轮播图组件
+import swiper from "../carousel/carouselPhots.vue";
 export default {
     data() {
         return {
@@ -71,32 +70,46 @@ export default {
                 })
                 .catch(err => {});
         }
+    },
+    // 挂载轮播图
+    components: {
+        swiper
     }
 };
 </script>
 
 <style lang="scss" scoped>
-/*设置轮播图的高度*/
-.mint-swipe {
-    height: 200px;
-    background-size: cover;
-    img {
-        width: 100%;
-        height: 100%;
-    }
-}
 .mui-grid-view.mui-grid-9 {
     background-color: #fff;
     border: none;
+    padding: 6px;
     .mui-media-body {
         font-size: 13px;
     }
     li {
+        border-radius: 50%;
+        padding: 15px;
         a {
+            // 新闻资讯 商品购买
+            .mui-icon-extra-order,
+            .mui-icon-extra-cart {
+                font-size: 26px;
+            }
+            // 图片欣赏
+            .mui-icon-image {
+                font-size: 30px;
+            }
+            // 留言反馈  视频专区
+            .mui-icon-chatbubble,
+            .mui-icon-videocam,
+            .mui-icon-phone {
+                font-size: 36px;
+            }
+
             span {
-                width: 60px;
-                height: 60px;
-                line-height: 60px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
                 text-align: center;
                 border-radius: 50%;
                 color: #fff;
