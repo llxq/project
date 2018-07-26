@@ -31,13 +31,14 @@
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <router-link to="#">
-                    <span class="mui-icon mui-icon mui-icon-videocam"></span>
-                    <div class="mui-media-body">视频专区</div>
+                <router-link to="/home/issue">
+                    <span class="mui-icon mui-icon-compose"></span>
+                    <div class="mui-media-body">问题反馈</div>
                 </router-link>
             </li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <router-link to="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" @click="show">
+                <!-- 联系我们路由：/home/contact -->
+                <router-link to="/home">
                     <span class="mui-icon mui-icon-phone"></span>
                     <div class="mui-media-body">联系我们</div>
                 </router-link>
@@ -47,6 +48,8 @@
 </template>
 
 <script>
+import mui from "../../lib/mui/js/mui.min.js";
+import { Toast } from "mint-ui";
 // 导入轮播图组件
 import swiper from "../carousel/carouselPhots.vue";
 export default {
@@ -69,6 +72,14 @@ export default {
                     }
                 })
                 .catch(err => {});
+        },
+        show() {
+            mui.confirm("暂时没有该模块", "Hello", ["是", "否"], () => {
+                Toast({
+                    message: "谢谢您的支持",
+                    duration: 1000,
+                });
+            });
         }
     },
     // 挂载轮播图
@@ -101,9 +112,11 @@ export default {
             }
             // 留言反馈  视频专区
             .mui-icon-chatbubble,
-            .mui-icon-videocam,
             .mui-icon-phone {
                 font-size: 36px;
+            }
+            .mui-icon-compose {
+                font-size: 34px;
             }
 
             span {

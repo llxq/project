@@ -1,7 +1,6 @@
 <template>
     <div class="comment-container">
-        <h3>留言板</h3>
-        <hr>
+        <h1>留言板</h1>
         <textarea placeholder="请输入要品论的内容(最多吐槽20字)" maxlength="120" v-model="commentInfo"></textarea>
         <mt-button type="primary" size="large" @click="publish">发表留言</mt-button>
         <div class="comment-list">
@@ -107,7 +106,7 @@ export default {
                 Toast({
                     message: "留言不能为空",
                     duration: 1000
-                })
+                });
             }
         }
     }
@@ -116,8 +115,9 @@ export default {
 
 <style lang="scss" scoped>
 .comment-container {
-    h3 {
-        font-size: 18px;
+    h1 {
+        text-align: center;
+        color: #226aff;
     }
     textarea {
         font-size: 15px;

@@ -21,8 +21,8 @@
                 <span class="mui-tab-label">首页</span>
             </router-link>
             <router-link class="mui-tab-item-new" to="/member">
-                <span class="mui-icon mui-icon-contact"></span>
-                <span class="mui-tab-label">会员</span>
+                <span class="mui-icon mui-icon-location"></span>
+                <span class="mui-tab-label">小管家</span>
             </router-link>
             <router-link class="mui-tab-item-new" to="/shopCar">
                 <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
@@ -30,9 +30,9 @@
                 </span>
                 <span class="mui-tab-label">购物车</span>
             </router-link>
-            <router-link class="mui-tab-item-new" to="/search">
-                <span class="mui-icon mui-icon-search"></span>
-                <span class="mui-tab-label">搜索</span>
+            <router-link class="mui-tab-item-new" to="/login">
+                <span class="mui-icon mui-icon-contact"></span>
+                <span class="mui-tab-label">{{ $store.state.isLogin }}</span>
             </router-link>
         </nav>
     </div>
@@ -50,10 +50,20 @@ export default {
         goBack() {
             // 点击后退
             this.$router.go(-1);
+        },
+        getLoginState() {
+            let userInfos = JSON.parse(localStorage.getItem("userInfo")) || [];
+            userInfos.some(item => {
+                if (item.isLogin) {
+                    this.$store.commit("updateLoginState", item.user);
+                    return;
+                }
+            });
         }
     },
     created() {
         this.flag = this.$route.path === "/home" ? false : true;
+        this.getLoginState();
     },
     // 监听路由
     watch: {
@@ -62,6 +72,38 @@ export default {
                 this.flag = false;
             } else {
                 this.flag = true;
+            }
+
+            if (newValue === "/login") {
+                let userInfos =
+                    JSON.parse(localStorage.getItem("userInfo")) || [];
+                let isLoginState = false;
+                userInfos.some(item => {
+                    if (item.isLogin) {
+                        isLoginState = true;
+                    }
+                });
+                if (isLoginState) {
+                    this.$router.push("/userInfo");
+                } else {
+                    this.$router.push("/login");
+                }
+            }
+
+            if (newValue === "/shopCar") {
+                let userInfos =
+                    JSON.parse(localStorage.getItem("userInfo")) || [];
+                let isLoginState = false;
+                userInfos.some(item => {
+                    if (item.isLogin) {
+                        isLoginState = true;
+                    }
+                });
+                if (isLoginState) {
+                    this.$router.push("/shopCar");
+                } else {
+                    this.$router.push("/goLogin");
+                }
             }
         }
     }

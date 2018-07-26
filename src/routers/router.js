@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import Home from '../components/content/Home.vue';
 import Member from '../components/content/Member.vue';
 import shopCar from '../components/content/shopCar.vue';
-import Search from '../components/content/Search.vue';
+import login from '../components/content/login.vue';
 import newsList from '../components/content-info/news/newsList.vue';
 import newsInfo from '../components/content-info/news/newsInfo.vue';
 import photoList from '../components/content-info/photos/photoList.vue';
@@ -14,6 +14,11 @@ import goodsInfo from '../components/content-info/goods/goodsInfo.vue';
 import goodsIntroduce from '../components/content-info/goods/goodsIntroduce.vue';
 import goodsComment from '../components/content-info/goods/goodsComment.vue';
 import leaveMessage from '../components/comment/leaveMessage.vue';
+import issue from '../components/issue/issue.vue';
+import contact from '../components/contactUs/contact.vue';
+import register from '../components/register/register.vue';
+import userInfo from '../components/userInfo/userInfo.vue';
+import goLogin from '../components/shorpCar/goLogin.vue';
 
 export default new VueRouter({
     routes: [{
@@ -33,8 +38,8 @@ export default new VueRouter({
             component: shopCar
         },
         {
-            path: '/search',
-            component: Search
+            path: '/login',
+            component: login
         },
         {
             path: '/home/newsList',
@@ -67,11 +72,30 @@ export default new VueRouter({
         {
             path: '/home/goodsIntroduce',
             component: goodsIntroduce
-        }
-        ,
+        },
         {
             path: '/home/leaveMessage',
             component: leaveMessage
+        },
+        {
+            path: '/home/issue',
+            component: issue
+        },
+        {
+            path: '/home/contact',
+            component: contact
+        },
+        {
+            path: '/home/register',
+            component: register
+        },
+        {
+            path: '/userInfo',
+            component: userInfo
+        },
+        {
+            path: '/goLogin',
+            component: goLogin
         }
     ],
     linkActiveClass: 'mui-active' // 覆盖默认路由高亮样式

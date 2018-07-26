@@ -80,11 +80,10 @@ export default {
 
 <style lang="scss" scoped>
 .shopCar-container {
-    background-color: #cccccc;
-    overflow: hidden;
     .mui-card {
         .mui-card-content {
             .mui-card-content-inner {
+                border: 1px solid #ccc;
                 display: flex;
                 align-items: center;
                 img {

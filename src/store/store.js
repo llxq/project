@@ -6,11 +6,12 @@ export default new Vuex.Store({
     state: {
         title: '',
         // 将数据存储到缓存。通过缓存获取
-        shorpCar: JSON.parse(localStorage.getItem('shorpCar')) || []
+        shorpCar: JSON.parse(localStorage.getItem('shorpCar')) || [],
 
         //[
         //     // {id: 商品的id，count：商品的数量，price：单价，selected：是否c被选中} 传数据的时候，应该按照这样的格式来
         // ]
+        isLogin: '未登录'
     },
     mutations: {
         add(state, msg) {
@@ -63,6 +64,10 @@ export default new Vuex.Store({
             })
             // 将商品信息放到缓存
             localStorage.setItem('shorpCar', JSON.stringify(state.shorpCar))
+        },
+        // 修改登录状态
+        updateLoginState(state, info) {
+            state.isLogin = info;
         }
     },
     // 相当于是 计算属性
