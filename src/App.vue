@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
         <!-- 顶部 header区域 -->
-        <mt-header fixed title="这是标题">
+        <mt-header fixed title="Hello">
             <!-- 使用了 mint-ui的 header -->
             <span to="/" slot="left" @click="goBack" class="return" v-show="flag">
                 <mt-button icon="back">返回</mt-button>
