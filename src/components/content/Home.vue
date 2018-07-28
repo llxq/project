@@ -65,10 +65,10 @@ export default {
         // 获取图片数据
         getSwipe() {
             this.$http
-                .get("https://www.apiopen.top/meituApi?page=5")
+                .get("https://www.apiopen.top/meituApi?page=4")
                 .then(result => {
                     if (result.body.code === 200) {
-                        this.swipePicture = result.body.data.slice(0, 3);
+                        this.swipePicture = result.body.data.slice(0, 5);
                     }
                 })
                 .catch(err => {});

@@ -34,7 +34,7 @@ export default {
     methods: {
         getList() {
             this.$http
-                .get("../../data/newsList.json")
+                .get("/newsList")
                 .then(result => {
                     this.newsList = result.body.stories;
                 })

@@ -66,7 +66,7 @@ export default {
     methods: {
         getAll() {
             this.$http
-                .get("../../../data/photoShare.json")
+                .get("/photoShare")
                 .then(result => {
                     this.photoList = result.body.data;
                     this.showList = this.photoList.slice(0, 10);

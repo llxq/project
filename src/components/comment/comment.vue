@@ -49,7 +49,7 @@ export default {
             let news = JSON.parse(localStorage.getItem("commentInfo"));
             this.showList = news || [];
             this.$http
-                .get("../../data/comment.json")
+                .get("/comment")
                 .then(result => {
                     this.commentList = result.body.comments;
                     this.commentList = this.showList.concat(this.commentList);

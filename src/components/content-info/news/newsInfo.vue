@@ -40,7 +40,7 @@ export default {
     methods: {
         getNewsInfo() {
             this.$http
-                .get("../../../data/newsInfo.json")
+                .get("/newsInfo")
                 .then(result => {
                     this.message = result.body.message;
                 })
